@@ -61,7 +61,7 @@ class Hand:
     def calculate_value(self):
         self.value = 0
         has_ace = False
-
+        card_value = 0
         for card in self.cards:
             if len(self.cards) > 0:
                 card_value = int(card.rank["value"])
@@ -159,7 +159,7 @@ class Game:
             print("Dealer's hand:", dealer_hand_value)
             self.check_winner(player_hand, dealer_hand, game_over=True)
 
-    def check_winner(self, player_hand, dealer_hand, game_over=False):
+    def check_winner(self, player_hand, dealer_hand, game_over = False):
         if not game_over:
             if player_hand.get_value() > 21:
                 print("You busted. Dealer wins!")
@@ -176,9 +176,7 @@ class Game:
         else:
             if player_hand.get_value() > dealer_hand.get_value():
                 print("You win!")
-            elif (player_hand.get_value() == dealer_hand.get_value()):
-                print("Tie!")
-            else:
+            elif ( player_hand.get_value() == dealer_hand.get_value() ):
                 print("Dealer wins!")
             return True
         return False
